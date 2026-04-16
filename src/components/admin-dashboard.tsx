@@ -369,6 +369,7 @@ export function AdminDashboard() {
                       >
                         <option value="Pass">Pass</option>
                         <option value="Fail">Back (Fail)</option>
+                        <option value="GracePass">GPass (grace)</option>
                         <option value="Dash">-- (e.g. TEP)</option>
                       </select>
                     </label>

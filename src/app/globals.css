@@ -33,15 +33,17 @@ body {
   background: #1a237e;
 }
 
-/* Grade table: full grid (vertical + horizontal rules) like official Statement of Grades */
-.marksheet-print-root table.marksheet-grade-table {
-  border-collapse: collapse;
-}
-
+/* Subject data rows: vertical rules only — no horizontal lines between subject rows (matches official marksheet) */
 .marksheet-print-root table.marksheet-grade-table td.marksheet-data-cell {
-  border: 1px solid #000 !important;
+  border-style: solid !important;
+  border-color: #000 !important;
+  border-width: 0 1px 0 1px !important;
   vertical-align: middle;
   min-height: 22px;
+}
+
+.marksheet-print-root table.marksheet-grade-table tbody tr.marksheet-row:last-child td.marksheet-data-cell {
+  border-bottom-width: 1px !important;
 }
 
 /* First column: top-align so code + wrapped name match official marksheet */
@@ -49,8 +51,10 @@ body {
   vertical-align: top !important;
 }
 
-/* Theory / Practical section row: same grid lines as data rows */
+/* Section label cell: no extra horizontal rules (borders come from .marksheet-data-cell) */
 .marksheet-print-root table.marksheet-grade-table tbody tr.marksheet-section-row td.marksheet-section-first {
+  border-top: none !important;
+  border-bottom: none !important;
   text-align: left;
 }
 

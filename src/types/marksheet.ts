@@ -13,8 +13,8 @@ export type Subject = {
   obtainedESE: number;
   obtainedTotal: number;
   grade: string;
-  /** `Dash` renders as "--" (e.g. TEP rows on official marksheets). */
-  status: "Pass" | "Fail" | "Dash";
+  /** `Dash` renders as "--" (e.g. TEP rows). `GracePass` renders as "GPass". */
+  status: "Pass" | "Fail" | "Dash" | "GracePass";
 };
 
 export type PersonalDetails = {
@@ -40,11 +40,11 @@ export type StudentRecord = {
 };
 
 export const defaultPersonalDetails: PersonalDetails = {
-  candidateName: "RAVINDRA KUMAR GOCHAR",
+  candidateName: "RAVINDRA KUMAR GOCHER",
   enrollmentNumber: "2012/01546",
   rollNumber: "2012BMEXU39",
   motherName: "SANTOSH BAI",
-  fatherName: "AMAR LAL GOCHAR",
+  fatherName: "AMAR LAL GOCHER",
   semester: "Fourth Semester (Main)",
   branch: "Mechanical Engineering",
   examDate: "May 2014",

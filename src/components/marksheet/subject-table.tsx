@@ -48,7 +48,13 @@ function rows(subjects: Subject[], type: Subject["type"]) {
         <td className="marksheet-data-cell px-[8px] py-[6px] text-center">{subject.obtainedTotal}</td>
         <td className="marksheet-data-cell px-[8px] py-[6px] text-center font-bold">{subject.grade}</td>
         <td className="marksheet-data-cell px-[8px] py-[6px] text-center">
-          {subject.status === "Fail" ? "Back" : subject.status === "Dash" ? "--" : "Pass"}
+          {subject.status === "Fail"
+            ? "Back"
+            : subject.status === "Dash"
+              ? "--"
+              : subject.status === "GracePass"
+                ? "GPass"
+                : "Pass"}
         </td>
       </tr>
     ));
