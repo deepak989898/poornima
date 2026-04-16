@@ -30,7 +30,46 @@ body {
 }
 
 .marksheet-top-banner {
-  background: #1a237e;
+  background: #17258e;
+}
+
+.marksheet-brand-title {
+  font-family: "Times New Roman", Georgia, serif;
+  font-weight: 700;
+}
+
+.marksheet-brand-subtitle {
+  font-family: "Times New Roman", Georgia, serif;
+  font-weight: 700;
+}
+
+.marksheet-security-bg {
+  background-color: #f2ebeb;
+  overflow: hidden;
+}
+
+.marksheet-security-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      rgba(0, 120, 255, 0.03) 0,
+      rgba(0, 120, 255, 0.03) 1px,
+      transparent 1px,
+      transparent 5px
+    ),
+    repeating-linear-gradient(
+      135deg,
+      rgba(0, 120, 255, 0.03) 0,
+      rgba(0, 120, 255, 0.03) 1px,
+      transparent 1px,
+      transparent 5px
+    );
+}
+
+.marksheet-table-watermark {
+  opacity: 0.12;
 }
 
 /* Subject data rows: vertical rules only — no horizontal lines between subject rows (matches official marksheet) */
