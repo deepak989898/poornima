@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Poornima University Marksheet Generator
 
-## Getting Started
+Full-stack Next.js application for creating, saving, editing, and exporting university-style marksheets (PDF) with Firebase and `html2pdf.js`.
 
-First, run the development server:
+## Tech Stack
+
+- Next.js (App Router) + TypeScript
+- Tailwind CSS
+- Firebase Auth + Firestore + Storage
+- html2pdf.js for A4 PDF export
+
+## Features
+
+- Secure admin login through Firebase Authentication
+- Dynamic student + subject entry form (Theory/Practical)
+- Auto calculation of total marks and SGPA
+- Save, edit, delete marksheets in Firestore (`students` collection)
+- Pixel-styled marksheet preview inspired by uploaded sample
+- Watermark in the center of the marksheet
+- Grade-based colors (A+/A green, C orange, etc.)
+- Download high-quality print-ready PDF
+
+## Firebase Setup
+
+1. Create a Firebase project.
+2. Enable **Authentication > Email/Password**.
+3. Add one admin user in Authentication.
+4. Enable **Cloud Firestore** (production/test as preferred).
+5. Enable **Storage**.
+6. Copy `.env.example` to `.env.local` and fill values:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+cp .env.example .env.local
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Windows PowerShell:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```powershell
+Copy-Item .env.example .env.local
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+7. Set `NEXT_PUBLIC_ADMIN_EMAIL` to your admin login email.
 
-## Learn More
+## Firestore Structure
 
-To learn more about Next.js, take a look at the following resources:
+Collection: `students`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `personalDetails` (object)
+- `subjects` (array)
+- `totalMarks` (number)
+- `sgpa` (number)
+- `createdAt` (timestamp)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Run Locally
 
-## Deploy on Vercel
+```bash
+npm install
+npm run dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Open `http://localhost:3000`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Production Notes
+
+- Restrict Firestore/Storage rules to authenticated admin users.
+- For stronger role validation, use Firebase custom claims or server-side route handlers.
+- You can replace `public/university-watermark.png` with a transparent university logo for even better visual match.
