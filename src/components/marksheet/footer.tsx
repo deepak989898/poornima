@@ -1,20 +1,24 @@
 type FooterProps = {
   sgpa: number;
+  totalCredits: number;
+  weightedPoints: number;
   issueDate: string;
   backCount: number;
 };
 
-export function Footer({ sgpa, issueDate, backCount }: FooterProps) {
+export function Footer({ sgpa, totalCredits, weightedPoints, issueDate, backCount }: FooterProps) {
   const promotedBackText = backCount > 0 ? String(backCount) : "NIL";
 
   return (
     <>
-      <section className="mt-auto border-t border-black px-4 py-2">
+      <section className="mt-auto px-4 py-2">
         <div className="flex items-baseline justify-between gap-6">
-          <p className="text-[16px] font-bold">SGPA = {(sgpa * 28.5).toFixed(2)} / 28.50 = {sgpa.toFixed(2)}</p>
+          <p className="text-[16px] font-bold">
+            SGPA = {weightedPoints.toFixed(2)} / {totalCredits.toFixed(2)} = {sgpa.toFixed(2)}
+          </p>
           <p className="text-[16px] font-bold tracking-[0.01em]">
             Promoted to next semester with{" "}
-            <span className="mx-1 inline-block min-w-[28px] border-b border-black text-center">{promotedBackText}</span>{" "}
+            <span className="mx-[2px] inline-block border-b border-black px-[2px] leading-none">{promotedBackText}</span>{" "}
             back
           </p>
         </div>
@@ -23,7 +27,7 @@ export function Footer({ sgpa, issueDate, backCount }: FooterProps) {
       <section className="mt-6 flex items-end justify-between px-4 pb-2 text-[14px]">
         <div className="flex items-center gap-2">
           <p>Checked by</p>
-          <div className="h-[1px] w-[150px] bg-black" />
+          <div className="mt-[10px] h-[1px] w-[150px] bg-black" />
         </div>
         <p>Controller of Examinations</p>
       </section>

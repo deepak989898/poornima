@@ -104,7 +104,7 @@ export function SubjectTable({ subjects }: SubjectTableProps) {
           ))}
         </tr>
       </thead>
-      <tbody>
+      <tbody className="font-bold">
         {sectionDividerRow("Theory")}
         {rows(subjects, "Theory")}
         {sectionDividerRow("Practical / Sessional")}

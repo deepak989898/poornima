@@ -3,12 +3,14 @@ import { Footer } from "@/components/marksheet/footer";
 import { Header } from "@/components/marksheet/header";
 import { StudentDetails } from "@/components/marksheet/student-details";
 import { SubjectTable } from "@/components/marksheet/subject-table";
+import { computeTotals } from "@/lib/calc";
 import { StudentRecord } from "@/types/marksheet";
 
 type MarksheetTemplateProps = { record: StudentRecord };
 
 export function MarksheetTemplate({ record }: MarksheetTemplateProps) {
   const backCount = record.subjects.filter((subject) => subject.status === "Fail").length;
+  const { sgpa, totalCredits, weightedPoints } = computeTotals(record.subjects);
   const officialLogo = "/poornima-university-logo.png";
 
   return (
@@ -33,7 +35,13 @@ export function MarksheetTemplate({ record }: MarksheetTemplateProps) {
                 <SubjectTable subjects={record.subjects} />
               </div>
             </div>
-            <Footer sgpa={record.sgpa} issueDate={record.personalDetails.issueDate} backCount={backCount} />
+            <Footer
+              sgpa={sgpa}
+              totalCredits={totalCredits}
+              weightedPoints={weightedPoints}
+              issueDate={record.personalDetails.issueDate}
+              backCount={backCount}
+            />
           </div>
         </div>
       </div>

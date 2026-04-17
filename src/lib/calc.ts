@@ -44,8 +44,15 @@ export function computeTotals(subjects: Subject[]) {
   const totals = subjects.reduce(
     (acc, subject) => {
       const credits = Number(subject.credits || 0);
-      const grade = subject.status === "Fail" ? "F" : subject.grade.toUpperCase();
-      const gradePoint = gradePoints[grade] ?? 0;
+
+      // Rows like "--", I, or W are not part of SGPA formula denominator.
+      if (subject.status === "Dash") return acc;
+
+      const grade = subject.status === "Fail" ? "F" : subject.grade.toUpperCase().trim();
+      const gradePoint = gradePoints[grade];
+
+      if (gradePoint === undefined) return acc;
+
       acc.totalCredits += credits;
       acc.weightedPoints += credits * gradePoint;
       return acc;
@@ -56,7 +63,7 @@ export function computeTotals(subjects: Subject[]) {
   const sgpa =
     totals.totalCredits > 0 ? Number((totals.weightedPoints / totals.totalCredits).toFixed(2)) : 0;
 
-  return { totalMarks, sgpa };
+  return { totalMarks, sgpa, totalCredits: totals.totalCredits, weightedPoints: totals.weightedPoints };
 }
 
 export function gradeColor(grade: string): string {
