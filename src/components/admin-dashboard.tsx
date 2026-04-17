@@ -12,6 +12,7 @@ import { useEffect } from "react";
 import { getFirebaseAuth } from "@/lib/firebase";
 import { computeTotals, getDefaultSubject, syncObtainedTotal } from "@/lib/calc";
 import { createStudent, deleteStudent, getStudents, updateStudent } from "@/lib/students";
+import { MarksheetBackTemplate } from "@/components/marksheet-back-template";
 import { MarksheetTemplate } from "@/components/marksheet-template";
 import { MarksheetHdPngButton, PdfGeneratorButton } from "@/components/pdf-generator-button";
 import { PersonalDetails, StudentRecord, Subject } from "@/types/marksheet";
@@ -28,6 +29,8 @@ type FormState = {
   personalDetails: PersonalDetails;
   subjects: Subject[];
 };
+
+type TemplateSide = "front" | "back";
 
 export function AdminDashboard() {
   const authInstance = useMemo<Auth | null>(() => {
@@ -47,6 +50,7 @@ export function AdminDashboard() {
   const [activePresetSemester, setActivePresetSemester] = useState<AdminSemesterNumber | null>(4);
   const [students, setStudents] = useState<StudentRecord[]>([]);
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [activeTemplateSide, setActiveTemplateSide] = useState<TemplateSide>("front");
   const [saving, setSaving] = useState(false);
 
   const selectedRecord = useMemo(
@@ -245,6 +249,31 @@ export function AdminDashboard() {
           <form onSubmit={onSubmit} className="space-y-4">
             <h2 className="text-lg font-bold text-slate-900">Student Details</h2>
             <div className="rounded-lg border border-slate-200 bg-slate-50 p-3">
+            <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">Marksheet template</p>
+            <div className="mb-3 flex flex-wrap gap-1.5">
+              <button
+                type="button"
+                onClick={() => setActiveTemplateSide("front")}
+                className={`rounded-md px-2.5 py-1 text-xs font-semibold transition-colors ${
+                  activeTemplateSide === "front"
+                    ? "bg-slate-900 text-white"
+                    : "border border-slate-300 bg-white text-slate-700 hover:bg-slate-100"
+                }`}
+              >
+                Front Side
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveTemplateSide("back")}
+                className={`rounded-md px-2.5 py-1 text-xs font-semibold transition-colors ${
+                  activeTemplateSide === "back"
+                    ? "bg-slate-900 text-white"
+                    : "border border-slate-300 bg-white text-slate-700 hover:bg-slate-100"
+                }`}
+              >
+                Back Side
+              </button>
+            </div>
               <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">
                 Default semester templates
               </p>
@@ -435,7 +464,11 @@ export function AdminDashboard() {
 
           <div className="overflow-x-auto rounded-xl border border-slate-200 bg-slate-50 p-4 shadow-sm">
             <div className="flex min-w-0 justify-center">
-              <MarksheetTemplate record={activePreview} />
+              {activeTemplateSide === "back" ? (
+                <MarksheetBackTemplate />
+              ) : (
+                <MarksheetTemplate record={activePreview} />
+              )}
             </div>
           </div>
         </section>
