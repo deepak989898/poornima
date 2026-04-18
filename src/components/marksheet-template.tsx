@@ -23,7 +23,7 @@ export function MarksheetTemplate({ record }: MarksheetTemplateProps) {
 
         <div className="relative z-10 flex h-full flex-col">
           <Header personalDetails={record.personalDetails} logoSrc={officialLogo} />
-          <div className="px-4 pb-2">
+          <div className="flex flex-1 flex-col px-4 pb-2">
             <StudentDetails personalDetails={record.personalDetails} />
             <div className="relative mx-auto mt-4 w-[96%]">
               <div
@@ -35,13 +35,15 @@ export function MarksheetTemplate({ record }: MarksheetTemplateProps) {
                 <SubjectTable subjects={record.subjects} />
               </div>
             </div>
-            <Footer
-              sgpa={sgpa}
-              totalCredits={totalCredits}
-              weightedPoints={weightedPoints}
-              issueDate={record.personalDetails.issueDate}
-              backCount={backCount}
-            />
+            <div className="flex flex-1 flex-col">
+              <Footer
+                sgpa={sgpa}
+                totalCredits={totalCredits}
+                weightedPoints={weightedPoints}
+                issueDate={record.personalDetails.issueDate}
+                backCount={backCount}
+              />
+            </div>
           </div>
         </div>
       </div>

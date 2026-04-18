@@ -22,14 +22,11 @@ function assignIds(rows: SubjectRow[]): Subject[] {
 }
 
 function personalForSemester(sem: AdminSemesterNumber): PersonalDetails {
+  const base = defaultPersonalDetails;
+
   if (sem === 1) {
     return {
-      ...defaultPersonalDetails,
-      candidateName: "SUDHAKAR SHARMA",
-      enrollmentNumber: "2012/00419",
-      rollNumber: "1C/12/041",
-      motherName: "MEERA SHARMA",
-      fatherName: "BRAJESH KUMAR SHARMA",
+      ...base,
       semester: "First Semester (Main)",
       examDate: "2012",
       statementNumber: "130419",
@@ -38,12 +35,7 @@ function personalForSemester(sem: AdminSemesterNumber): PersonalDetails {
   }
   if (sem === 2) {
     return {
-      ...defaultPersonalDetails,
-      candidateName: "SUDHAKAR SHARMA",
-      enrollmentNumber: "2012/00419",
-      rollNumber: "1C/12/041",
-      motherName: "MEERA SHARMA",
-      fatherName: "BRAJESH KUMAR SHARMA",
+      ...base,
       semester: "Second Semester (Main)",
       examDate: "May 2013",
       statementNumber: "131963",
@@ -52,17 +44,19 @@ function personalForSemester(sem: AdminSemesterNumber): PersonalDetails {
   }
   if (sem === 3) {
     return {
-      ...defaultPersonalDetails,
-      rollNumber: "2012BMEX1139",
+      ...base,
       semester: "Third Semester (Main)",
       examDate: "November 2013",
       statementNumber: "141863",
       issueDate: "08-Jan-2014",
     };
   }
+  if (sem === 4) {
+    return { ...base };
+  }
   if (sem === 5) {
     return {
-      ...defaultPersonalDetails,
+      ...base,
       semester: "Fifth Semester (Main)",
       examDate: "Dec 2014",
       statementNumber: "142085",
@@ -71,13 +65,14 @@ function personalForSemester(sem: AdminSemesterNumber): PersonalDetails {
   }
   if (sem === 6) {
     return {
-      ...defaultPersonalDetails,
+      ...base,
       semester: "Sixth Semester (Main)",
       examDate: "May 2015",
       statementNumber: "142196",
       issueDate: "30-Jun-2015",
     };
   }
+
   const examDates = [
     "Dec 2012",
     "May 2013",
@@ -90,11 +85,11 @@ function personalForSemester(sem: AdminSemesterNumber): PersonalDetails {
   ] as const;
   const statementSuffix = 141641 + (sem - 1) * 111;
   return {
-    ...defaultPersonalDetails,
+    ...base,
     semester: `${ORDINAL[sem - 1]} Semester (Main)`,
     examDate: examDates[sem - 1],
     statementNumber: String(statementSuffix),
-    issueDate: defaultPersonalDetails.issueDate,
+    issueDate: base.issueDate,
   };
 }
 
@@ -287,26 +282,18 @@ const SEMESTER_6_SUBJECTS: SubjectRow[] = [
 ];
 
 const SEMESTER_7_SUBJECTS: SubjectRow[] = [
-  t("BME07101", "Computer Aided Manufacturing", 3, 20, 36, 56, "B", "Pass"),
-  t("BME07102", "Total Quality Management", 3, 28, 40, 68, "B+", "Pass"),
-  t("BME07103", "Departmental Elective-I", 3, 18, 32, 50, "C", "Pass"),
-  t("BME07104", "Open Elective-I", 3, 22, 28, 50, "C", "Pass"),
-  {
-    type: "Practical",
-    code: "BME07105",
-    name: "Industrial Training Seminar",
-    credits: 2,
-    maxIE: 60,
-    maxESE: 40,
-    maxTotal: 100,
-    obtainedIE: 38,
-    obtainedESE: 0,
-    obtainedTotal: 38,
-    grade: "B+",
-    status: "Pass",
-  },
-  p("BME07211", "CAM Lab", 1.5, 40, 38, 78, "A", "Pass"),
-  tep("BME07612", "Discipline and TEP-VII", 2, 40, "B", "Pass"),
+  t("BME07101", "Product Design and Development", 4, 21, 30, 51, "C", "Pass"),
+  t("BME07102", "Operations Research", 4.5, 27, 30, 57, "C", "Pass"),
+  t("BME07103", "Refrigeration and Air Conditioning", 4.5, 26, 26, 52, "C", "Pass"),
+  t("BME07104", "Computer Aided Design", 3, 24, 37, 61, "B", "Pass"),
+  t("BME07108", "Computer Integrated Manufacturing", 3, 17, 38, 55, "C", "Pass"),
+  t("BOE07139", "Basics of Petro Industry", 3, 19, 26, 45, "D", "Pass"),
+  p("BME07210", "Computer-Aided Design (CAD) Lab", 1.5, 45, 33, 78, "B+", "Pass"),
+  p("BME07211", "CNC Programming Lab", 1, 45, 28, 73, "B+", "Pass"),
+  p("BME07212", "Refrigeration and Air Conditioning Lab", 1, 46, 25, 71, "B+", "Pass"),
+  p("BME07313", "Minor Project", 2, 42, 22, 64, "B", "Pass"),
+  p("BME07414", "Technical Seminar", 1, 37, 14, 51, "C", "Pass"),
+  tep("BME07615", "Discipline & Talent Enrichment Programme (TEP)- VII", 2, 47, "A+", "Dash"),
 ];
 
 const SEMESTER_8_SUBJECTS: SubjectRow[] = [

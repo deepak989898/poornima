@@ -42,7 +42,7 @@ export type StudentRecord = {
 export const defaultPersonalDetails: PersonalDetails = {
   candidateName: "RAVINDRA KUMAR GOCHER",
   enrollmentNumber: "2012/01546",
-  rollNumber: "2012BMEXU39",
+  rollNumber: "2012BMEX1139",
   motherName: "SANTOSH BAI",
   fatherName: "AMAR LAL GOCHER",
   semester: "Fourth Semester (Main)",
