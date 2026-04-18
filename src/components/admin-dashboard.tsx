@@ -14,6 +14,7 @@ import { computeTotals, getDefaultSubject, syncObtainedTotal } from "@/lib/calc"
 import { createStudent, deleteStudent, getStudents, updateStudent } from "@/lib/students";
 import { MarksheetBackTemplate } from "@/components/marksheet-back-template";
 import { MarksheetTemplate } from "@/components/marksheet-template";
+import { ProvisionalCertificateTemplate } from "@/components/provisional-certificate-template";
 import { MarksheetHdPngButton, PdfGeneratorButton } from "@/components/pdf-generator-button";
 import { PersonalDetails, StudentRecord, Subject } from "@/types/marksheet";
 import {
@@ -30,7 +31,7 @@ type FormState = {
   subjects: Subject[];
 };
 
-type TemplateSide = "front" | "back";
+type TemplateSide = "front" | "back" | "provisional";
 
 export function AdminDashboard() {
   const authInstance = useMemo<Auth | null>(() => {
@@ -273,6 +274,17 @@ export function AdminDashboard() {
               >
                 Back Side
               </button>
+              <button
+                type="button"
+                onClick={() => setActiveTemplateSide("provisional")}
+                className={`rounded-md px-2.5 py-1 text-xs font-semibold transition-colors ${
+                  activeTemplateSide === "provisional"
+                    ? "bg-slate-900 text-white"
+                    : "border border-slate-300 bg-white text-slate-700 hover:bg-slate-100"
+                }`}
+              >
+                Provisional Certificate
+              </button>
             </div>
               <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">
                 Default semester templates
@@ -466,6 +478,8 @@ export function AdminDashboard() {
             <div className="flex min-w-0 justify-center">
               {activeTemplateSide === "back" ? (
                 <MarksheetBackTemplate />
+              ) : activeTemplateSide === "provisional" ? (
+                <ProvisionalCertificateTemplate record={activePreview} />
               ) : (
                 <MarksheetTemplate record={activePreview} />
               )}
