@@ -33,8 +33,11 @@ export function ProvisionalCertificateTemplate({ record }: ProvisionalCertificat
             <div className="flex items-center justify-center gap-4">
               <img src={officialLogo} alt="Poornima University logo" className="h-[108px] w-[108px]" />
               <div className="text-center leading-none text-[#17258e]">
-                <p className="text-[58px] font-bold tracking-[2px]">POORNIMA</p>
-                <p className="text-[36px] font-bold tracking-[11px]">UNIVERSITY</p>
+                <div className="flex items-end justify-center border-b-2 border-[#17258e] pb-[1px]">
+                  <span className="text-[86px] font-bold leading-[0.8] tracking-[2px]">P</span>
+                  <span className="-ml-[1px] text-[66px] font-bold leading-[0.8] tracking-[2px]">OORNIMA</span>
+                </div>
+                <p className="pt-[4px] text-[36px] font-bold tracking-[11px]">UNIVERSITY</p>
               </div>
             </div>
             <p className="mt-1 text-center text-[10px] font-semibold leading-none">
@@ -84,7 +87,7 @@ export function ProvisionalCertificateTemplate({ record }: ProvisionalCertificat
 
             <p className="whitespace-nowrap font-semibold">CGPA</p>
             <p className="text-center">:</p>
-            <p className="whitespace-nowrap">{record.sgpa.toFixed(2)}</p>
+            <p className="whitespace-nowrap">6.58</p>
 
             <p className="whitespace-nowrap font-semibold">Division</p>
             <p className="text-center">:</p>
@@ -107,7 +110,7 @@ export function ProvisionalCertificateTemplate({ record }: ProvisionalCertificat
             <p>
               IS-2027 to 2031, Ramchandrapura, P.O. Vidhani Vatika, Sitapura Extension, Jaipur-303 905 (Rajasthan)
             </p>
-            <p>Phone : +91-141-650250-51 * E-mail : info@poornima.edu.in * www.poornima.edu.in</p>
+            <p>Phone : +91-141-750250-51 * E-mail : info@poornima.edu.in * www.poornima.edu.in</p>
           </footer>
         </div>
       </div>
