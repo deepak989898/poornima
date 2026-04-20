@@ -48,24 +48,22 @@ export function MarksheetBackTemplate() {
             </div>
           </div>
 
-          <table className="mx-auto mt-3 w-[72%] border-collapse text-[14px]">
-            <thead>
-              <tr className="bg-[#eaf1fb] font-bold text-[#1d2d69]">
-                <th className="px-4 py-1 text-left">Courses</th>
-                <th className="px-4 py-1 text-center">ESE</th>
-                <th className="px-4 py-1 text-center">Total</th>
-              </tr>
-            </thead>
-            <tbody className="font-semibold">
+          <div className="mx-auto mt-3 w-[72%] text-[14px]">
+            <div className="grid grid-cols-[1fr_92px_92px] bg-[#eaf1fb] px-4 py-1 font-bold text-[#1d2d69]">
+              <div>Courses</div>
+              <div className="text-center">ESE</div>
+              <div className="text-center">Total</div>
+            </div>
+            <div className="font-semibold">
               {passingRows.map((row) => (
-                <tr key={row.course}>
-                  <td className="px-4 py-1">{row.course}</td>
-                  <td className="px-4 py-1 text-center">{row.ese}</td>
-                  <td className="px-4 py-1 text-center">{row.total}</td>
-                </tr>
+                <div key={row.course} className="grid grid-cols-[1fr_92px_92px] px-4 py-1">
+                  <div>{row.course}</div>
+                  <div className="text-center">{row.ese}</div>
+                  <div className="text-center">{row.total}</div>
+                </div>
               ))}
-            </tbody>
-          </table>
+            </div>
+          </div>
 
           <div className="mt-9 flex items-start text-[15px] leading-snug">
             <span className="w-6 shrink-0">3.</span>
@@ -75,32 +73,32 @@ export function MarksheetBackTemplate() {
             </p>
           </div>
 
-          <table className="mx-auto mt-2 w-[72%] border-collapse text-[14px]">
-            <thead>
-              <tr className="bg-[#eaf1fb] font-bold text-[#1d2d69]">
-                <th className="px-4 py-1 text-left">Grade</th>
-                <th className="px-4 py-1 text-left">Academic Performance</th>
-                <th className="px-4 py-1 text-center">Grade Point (G)</th>
-              </tr>
-            </thead>
-            <tbody className="font-semibold">
+          <div className="mx-auto mt-2 w-[72%] text-[14px]">
+            <div className="grid grid-cols-[96px_1fr_124px] bg-[#eaf1fb] px-4 py-1 font-bold text-[#1d2d69]">
+              <div>Grade</div>
+              <div>Academic Performance</div>
+              <div className="text-center">Grade Point (G)</div>
+            </div>
+            <div className="font-semibold">
               {gradeRows.map((row) => (
-                <tr key={row.grade}>
-                  <td className="px-4 py-[2px]">{row.grade}</td>
-                  <td className="px-4 py-[2px]">{row.performance}</td>
-                  <td className="px-4 py-[2px] text-center">{row.point}</td>
-                </tr>
+                <div key={row.grade} className="grid grid-cols-[96px_1fr_124px] px-4 py-[2px]">
+                  <div>{row.grade}</div>
+                  <div>{row.performance}</div>
+                  <div className="text-center">{row.point}</div>
+                </div>
               ))}
-            </tbody>
-          </table>
+            </div>
+          </div>
 
           <div className="mt-8 space-y-3 text-[15px] leading-snug">
             <div className="flex items-start">
               <span className="w-6 shrink-0">4.</span>
-              <p>
+              <p className="text-[14px] leading-[1.25]">
                 Semester Grade Point Average (SGPA) is calculated as{" "}
-                <span className="inline-block whitespace-nowrap border-b border-black pb-[1px] font-bold">
-                  SGPA = (C1G1 + C2G2 + ... + CiGi + ...) / (C1 + C2 + ... + Ci + ...)
+                <span className="font-bold">SGPA =</span>{" "}
+                <span className="inline-flex translate-y-[2px] flex-col items-center align-middle text-[12px] leading-none">
+                  <span className="border-b border-black px-[2px] pb-[1px]">C1G1 + C2G2 + ... + CiGi + ...</span>
+                  <span className="px-[2px] pt-[1px]">C1 + C2 + ... + Ci + ...</span>
                 </span>{" "}
                 where Ci is the number of credits allotted to the subject "i", Gi is the Grade Point associated to
                 the Grade given to that subject "i".

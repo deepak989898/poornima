@@ -12,7 +12,7 @@ export function Header({ personalDetails, logoSrc }: HeaderProps) {
     <>
       <header
         className="marksheet-top-banner relative grid h-[144px] grid-cols-[88px_minmax(0,1fr)_108px] items-center gap-x-1 px-3 pt-4 pb-2 text-white"
-        style={{ background: "#17258e" }}
+        style={{ background: "#2d3ca8" }}
       >
         <div className="z-10 flex justify-center pl-[52px]">
           <div

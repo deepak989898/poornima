@@ -123,12 +123,12 @@ const SEMESTER_4_SUBJECTS: SubjectRow[] = [
   },
 ];
 
-/** First semester — Poornima sample (1 back, SGPA 5.48). */
+/** First semester — Poornima sample (NIL back). */
 const SEMESTER_1_SUBJECTS: SubjectRow[] = [
   t("BT101LN101", "English-I", 2, 25, 30, 55, "C", "Pass"),
   t("BT101PH102", "Engineering Physics-I", 4, 17, 33, 50, "C", "Pass"),
   t("BT101CH103", "Chemistry and Environmental Engineering-I", 4, 25, 37, 62, "B", "Pass"),
-  t("BT101MA104", "Engineering Mathematics-I", 4, 20, 0, 20, "F", "Fail"),
+  t("BT101MA104", "Engineering Mathematics-I", 4, 24, 40, 64, "B", "Pass"),
   t("BT101ME105", "Engineering Mechanics", 4, 24, 24, 48, "D", "Pass"),
   t("BT101CS106", "Fundamentals of Computer", 2, 26, 29, 55, "C", "Pass"),
   t("BT101PD112", "Professional Development Courses(PDC)-I: Soft Skills", 2, 21, 41, 62, "B", "Pass"),
@@ -297,24 +297,15 @@ const SEMESTER_7_SUBJECTS: SubjectRow[] = [
 ];
 
 const SEMESTER_8_SUBJECTS: SubjectRow[] = [
-  {
-    type: "Theory",
-    code: "BME08101",
-    name: "Major Project",
-    credits: 8,
-    maxIE: 120,
-    maxESE: 80,
-    maxTotal: 200,
-    obtainedIE: 85,
-    obtainedESE: 78,
-    obtainedTotal: 163,
-    grade: "A",
-    status: "Pass",
-  },
-  t("BME08102", "Departmental Elective-II", 3, 24, 38, 62, "B+", "Pass"),
-  t("BME08103", "Open Elective-II", 3, 20, 30, 50, "C", "Pass"),
-  t("BME08104", "Professional Ethics & IPR", 2, 35, 35, 70, "B+", "Pass"),
-  tep("BME08605", "Discipline and TEP-VIII", 2, 42, "B", "Pass"),
+  t("BME08101", "Renewable Energy Technology", 3, 21, 29, 50, "D", "Pass"),
+  t("BME08102", "Gas Turbine and Gas Power Plant", 3.5, 22, 28, 50, "D", "Pass"),
+  t("BME08103", "Mechatronics", 3, 20, 30, 50, "D", "Pass"),
+  t("BME08105", "Operation Management", 3, 24, 36, 60, "C", "Pass"),
+  p("BME08209", "Industrial Engineering and Robotics Lab", 1.5, 37, 23, 60, "C", "Pass"),
+  p("BME08210", "Computational Mechanics Lab", 1.5, 31, 19, 50, "D", "Pass"),
+  p("BME08211", "Computer-Aided Engineering (CAE) Lab", 1.5, 36, 24, 60, "C", "Pass"),
+  p("BME08312", "Major Project", 6, 38, 22, 60, "C", "Pass"),
+  tep("BME08613", "Discipline and Talent Enrichment Programme (TEP)-VIII", 2, 38, "B+", "Dash"),
 ];
 
 function t(
