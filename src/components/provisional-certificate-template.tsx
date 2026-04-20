@@ -20,6 +20,8 @@ export function ProvisionalCertificateTemplate({ record }: ProvisionalCertificat
   const officialLogo = "/poornima-university-logo.png";
   const { personalDetails } = record;
   const dateParts = issueDateParts(personalDetails.issueDate);
+  const fixedPassingYear = "2016";
+  const fixedIssueDateDisplay = "August 26, 2016";
 
   return (
     <MarksheetLayout>
@@ -89,7 +91,7 @@ export function ProvisionalCertificateTemplate({ record }: ProvisionalCertificat
 
             <p className="whitespace-nowrap font-semibold">Passing Year</p>
             <p className="text-center">:</p>
-            <p className="whitespace-nowrap">{dateParts.year}</p>
+            <p className="whitespace-nowrap">{fixedPassingYear}</p>
 
             <p className="whitespace-nowrap font-semibold">CGPA</p>
             <p className="text-center">:</p>
@@ -104,7 +106,7 @@ export function ProvisionalCertificateTemplate({ record }: ProvisionalCertificat
               <div>
                 <p>Controller of Examinations</p>
                 <p className="mt-5 text-[14px] font-normal">Place : Jaipur</p>
-                <p className="mt-2 text-[14px] font-normal">Date of Issue : {dateParts.display}</p>
+                <p className="mt-2 text-[14px] font-normal">Date of Issue : {fixedIssueDateDisplay}</p>
               </div>
               <div className="text-right">
                 <p>Registrar</p>
