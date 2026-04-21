@@ -102,19 +102,18 @@ export function ProvisionalCertificateTemplate({ record }: ProvisionalCertificat
             <p className="whitespace-nowrap">Second Division</p>
             </section>
 
-            <section className="mt-44 grid grid-cols-2 items-end text-[15px] font-semibold">
-              <div>
-                <p>Controller of Examinations</p>
-                <p className="mt-5 text-[14px] font-normal">Place : Jaipur</p>
-                <p className="mt-2 text-[14px] font-normal">Date of Issue : {fixedIssueDateDisplay}</p>
-              </div>
-              <div className="text-right">
+            <section className="mt-44 text-[15px]">
+              <div className="flex items-baseline justify-between font-semibold">
+                <p>Controller of Examination</p>
                 <p>Registrar</p>
+              </div>
+              <div className="mt-5 text-[14px] font-normal">
+                <p>Place : Jaipur</p>
+                <p className="mt-2">Date of Issue : {fixedIssueDateDisplay}</p>
               </div>
             </section>
 
             <footer className="mt-auto pt-8 text-center text-[11px] leading-snug">
-              <p>( Valid till the original degree is issued at the next convocation )</p>
               <p>
                 IS-2027 to 2031, Ramchandrapura, P.O. Vidhani Vatika, Sitapura Extension, Jaipur-303 905 (Rajasthan)
               </p>
