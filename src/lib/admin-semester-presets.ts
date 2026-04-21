@@ -72,6 +72,15 @@ function personalForSemester(sem: AdminSemesterNumber): PersonalDetails {
       issueDate: "30-Jun-2015",
     };
   }
+  if (sem === 8) {
+    return {
+      ...base,
+      semester: "Eighth Semester (Main)",
+      examDate: "May 2016",
+      statementNumber: "142418",
+      issueDate: "30 June 2016",
+    };
+  }
 
   const examDates = [
     "Dec 2012",
