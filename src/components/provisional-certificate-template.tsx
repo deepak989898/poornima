@@ -95,7 +95,7 @@ export function ProvisionalCertificateTemplate({ record }: ProvisionalCertificat
 
             <p className="whitespace-nowrap font-semibold">CGPA</p>
             <p className="text-center">:</p>
-            <p className="whitespace-nowrap">6.58</p>
+            <p className="whitespace-nowrap">6.17</p>
 
             <p className="whitespace-nowrap font-semibold">Division</p>
             <p className="text-center">:</p>
