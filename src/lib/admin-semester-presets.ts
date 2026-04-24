@@ -52,7 +52,10 @@ function personalForSemester(sem: AdminSemesterNumber): PersonalDetails {
     };
   }
   if (sem === 4) {
-    return { ...base };
+    return {
+      ...base,
+      statementNumber: "141950",
+    };
   }
   if (sem === 5) {
     return {
